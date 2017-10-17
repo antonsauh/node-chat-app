@@ -1,4 +1,5 @@
 var expect = require('expect');
+var moment = require('moment');
 
 var {generateMessage, generateLocationMessage} = require('./message');
 
@@ -10,9 +11,8 @@ describe('generateMessage', () => {
         var obj2 = {
             from: 'Anton',
             text: 'hello',
-            createdAt: new Date().getTime()
+            createdAt: moment().valueOf()
         }
-        expect(obj).toMatchObject(obj2);
         expect(obj.from).toBe(obj2.from);
         expect(obj.text).toBe(obj2.text);
         expect(typeof obj.createdAt).toBe('number');
@@ -24,9 +24,8 @@ describe('generateLocationMessage', () => {
         var obj2 = {
             from: 'Anton',
             url: 'https://www.google.com/maps?q=59,24',
-            createdAt: new Date().getTime()
+            createdAt: moment().valueOf()
         }
-        expect(obj).toMatchObject(obj2);
         expect(obj.from).toBe(obj2.from);
         expect(obj.url).toBe(obj2.url);
         expect(typeof obj.createdAt).toBe('number');
